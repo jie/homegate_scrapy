@@ -13,8 +13,8 @@ db = Database(
 
 class Hacknews(db.Entity):
     identity = PrimaryKey(int)
-    title = Required(str, 128)
-    link = Required(str, 128)
+    title = Required(str, 256)
+    link = Required(str, 256)
 
 
 sql_debug(False)
