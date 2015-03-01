@@ -1,4 +1,3 @@
-from scrapy import log
 from scrapy.contrib.spiders import XMLFeedSpider
 from homegate_scrapy.items import HomegateScrapyItem
 
@@ -21,6 +20,7 @@ class HacknewsSpider(XMLFeedSpider):
         item['link'] = node.xpath('link/text()').extract()[0]
         comment = node.xpath('comments/text()').extract()[0]
         item['identity'] = self._parse_id(comment)
+        item['site'] = self.name
         return item
 
     def _parse_id(self, comment):

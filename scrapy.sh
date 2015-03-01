@@ -1,2 +1,2 @@
 cd /usr/webapps/python/homegate_scrapy
-scrapy crawl hacknews
+/usr/local/bin/scrapy crawl hacknews  > scrapy.out 2>&1

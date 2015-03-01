@@ -2,6 +2,7 @@
 # encoding: utf-8
 # @author: ZhouYang
 
+from datetime import datetime
 from pony.orm import *
 from settings import DATABASE
 
@@ -11,10 +12,15 @@ db = Database(
 )
 
 
-class Hacknews(db.Entity):
-    identity = PrimaryKey(int)
-    title = Required(str, 256)
+class News(db.Entity):
+    identity = Required(str, 36)
+    title = Required(str, 128)
     link = Required(str, 256)
+    description = Optional(str, 256)
+    content = Optional(str, nullable=True)
+    author = Optional(str, nullable=True)
+    site = Required(str, 36, nullable=True)
+    create_at = Optional(datetime, nullable=True)
 
 
 sql_debug(False)

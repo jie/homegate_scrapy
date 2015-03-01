@@ -18,7 +18,7 @@ ITEM_PIPELINES = {
 }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'homegate_scrapy (+http://www.yourdomain.com)'
+# USER_AGENT = 'homegate_scrapy (+http://www.yourdomain.com)'
 
 LOG_LEVEL = 'ERROR'
 # LOG_ENABLED = False
@@ -31,4 +31,3 @@ DATABASE = {
     'db': 'homegate',
     'charset': 'utf8'
 }
-

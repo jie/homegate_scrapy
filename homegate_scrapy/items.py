@@ -13,3 +13,5 @@ class HomegateScrapyItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     identity = scrapy.Field()
+    site = scrapy.Field()
+    content = scrapy.Field()

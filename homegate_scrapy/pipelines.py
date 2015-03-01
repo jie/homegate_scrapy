@@ -6,21 +6,25 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import pony.orm
-from database import Hacknews
+from database import News
 
 
 class HomegateScrapyPipeline(object):
 
     def process_item(self, item, spider):
-        with pony.orm.db_session:
-            if spider.name == 'hacknews':
+
+        if item:
+            with pony.orm.db_session:
                 try:
-                    news = Hacknews.get(identity=item['identity'])
+                    news = News.get(
+                        identity=item['identity'],
+                        site=item['site']
+                    )
                 except pony.orm.ObjectNotFound:
                     news = None
 
                 if not news:
-                    Hacknews(**item)
+                    News(**item)
                     pony.orm.flush()
                     pony.orm.commit()
 
