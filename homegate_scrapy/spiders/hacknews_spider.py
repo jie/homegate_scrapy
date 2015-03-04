@@ -14,6 +14,8 @@ class HacknewsSpider(XMLFeedSpider):
 
     IdentitySep = 'https://news.ycombinator.com/item?id='
 
+    showcase = 'news'
+
     def parse_node(self, response, node):
         item = HomegateScrapyItem()
         item['title'] = node.xpath('title/text()').extract()[0]
@@ -21,6 +23,7 @@ class HacknewsSpider(XMLFeedSpider):
         comment = node.xpath('comments/text()').extract()[0]
         item['identity'] = self._parse_id(comment)
         item['site'] = self.name
+        item['showcase'] = self.showcase
         return item
 
     def _parse_id(self, comment):

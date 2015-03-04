@@ -27,5 +27,10 @@ class HomegateScrapyPipeline(object):
                     News(**item)
                     pony.orm.flush()
                     pony.orm.commit()
+                else:
+                    if item.get('create_at'):
+                        news.create_at = item['create_at']
+                        pony.orm.flush()
+                        pony.orm.commit()
 
         return item

@@ -22,6 +22,9 @@ class TgbusSpider(CrawlSpider):
         ),
     ]
 
+    showcase = 'acgn'
+    tag = 'game'
+
     def parse_item(self, response):
         title = response.xpath(
             '//div[@class="content bdr"]//h1/text()').extract()
@@ -33,13 +36,15 @@ class TgbusSpider(CrawlSpider):
                 link = response.url
                 content = response.xpath(
                     '//div[@class="text"]//text()').extract()
-                content = content[0]
 
                 item = HomegateScrapyItem()
                 item['title'] = title
                 item['link'] = link
                 item['identity'] = parsed_link[1]
                 item['site'] = self.name
+                item['showcase'] = self.showcase
+                item['tag'] = self.tag
+                item['content'] = content[0].strip()
                 return item
 
     def parse_from_link(self, link):

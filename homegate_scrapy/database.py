@@ -20,6 +20,9 @@ class News(db.Entity):
     content = Optional(str, nullable=True)
     author = Optional(str, nullable=True)
     site = Required(str, 36, nullable=True)
+    tag = Optional(str, 64, nullable=True)
+    category = Optional(str, 32, nullable=True)
+    showcase = Optional(str, 32, nullable=True)
     create_at = Optional(datetime, nullable=True)
 
 

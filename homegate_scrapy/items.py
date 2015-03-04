@@ -15,3 +15,8 @@ class HomegateScrapyItem(scrapy.Item):
     identity = scrapy.Field()
     site = scrapy.Field()
     content = scrapy.Field()
+    description = scrapy.Field()
+    category = scrapy.Field()
+    tag = scrapy.Field()
+    showcase = scrapy.Field()
+    create_at = scrapy.Field()
